@@ -1,11 +1,20 @@
+
 require('dotenv').config({ path: '.env' })
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const ejs = require('ejs');
 
+const path = require('path');
+
+
+
 const app = express();
 const PORT = process.env.PORT;
+
+// Cấu hình views
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
 
 mongoose.connect(process.env.MONGODB_CONNECT_URI, {
   useNewUrlParser: true,
