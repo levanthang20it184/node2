@@ -1,12 +1,13 @@
+require('dotenv').config({ path: '.env' })
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const ejs = require('ejs');
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT;
 
-mongoose.connect('mongodb+srv://levanthang:levanthang@cluster0.zxvqskl.mongodb.net/product?retryWrites=true&w=majority', {
+mongoose.connect(process.env.MONGODB_CONNECT_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
